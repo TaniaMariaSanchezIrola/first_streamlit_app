@@ -2,4 +2,4 @@ import streamlit
 
 streamlit.title('My Parents New Healty Dinner')
 
-steramlit.title('Dinner')
+steramlit.header('Dinner')
