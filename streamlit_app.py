@@ -27,12 +27,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
-add_my_fruit = streamlit.text_input('What fruit would you like to add?')
-streamlit.write('Thanks for adding', add_my_fruit)
-
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
-
-
 #-------------------------------------------
 def get_fruityvice_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
@@ -53,11 +47,17 @@ except URLError as e:
   streamlit.error()
 #-------------------------------------------
 
+my_cur = my_cnx.cursor()
+add_my_fruit = streamlit.text_input('What fruit would you like to add?')
+streamlit.write('Thanks for adding', add_my_fruit)
+
+
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
 
 
 
-#my_cur = my_cnx.cursor()
+
 
 streamlit.header("The fruit load list contains:")
 def get_fruit_load_list():
